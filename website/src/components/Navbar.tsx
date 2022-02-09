@@ -1,40 +1,46 @@
-import { useState } from "react";
-import { routes } from "@/utils/routes";
+import { useState } from 'react'
 
-export const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+import Link from 'next/link'
+
+import { menuRoutes } from '@/utils/routes'
+
+const githubLink = 'https://github.com/DevC-Casa/awesome-morocco'
+
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
     <div className="bg-gray-900">
       <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="relative flex items-center justify-between">
-          <a
-            href="/"
-            aria-label="Awesome Morocco"
-            title="Awesome Morocco"
-            className="inline-flex items-center"
-          >
-            <svg
-              className="w-8 text-teal-accent-400"
-              viewBox="0 0 24 24"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeMiterlimit="10"
-              stroke="currentColor"
-              fill="none"
+          <Link href="/">
+            <a
+              aria-label="Awesome Morocco"
+              title="Awesome Morocco"
+              className="inline-flex items-center"
             >
-              <rect x="3" y="1" width="7" height="12" />
-              <rect x="3" y="17" width="7" height="6" />
-              <rect x="14" y="1" width="7" height="6" />
-              <rect x="14" y="11" width="7" height="12" />
-            </svg>
-            <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
-              Awesome Morocco
-            </span>
-          </a>
+              <svg
+                className="w-8 text-teal-accent-400"
+                viewBox="0 0 24 24"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeMiterlimit="10"
+                stroke="currentColor"
+                fill="none"
+              >
+                <rect x="3" y="1" width="7" height="12" />
+                <rect x="3" y="17" width="7" height="6" />
+                <rect x="14" y="1" width="7" height="6" />
+                <rect x="14" y="11" width="7" height="12" />
+              </svg>
+              <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
+                Awesome Morocco
+              </span>
+            </a>
+          </Link>
           <ul className="flex items-center hidden space-x-8 lg:flex">
-            {routes.map((el, index) => (
+            {menuRoutes.map((el, index) => (
               <li key={`link-${index}`}>
                 <a
                   href={el.link}
@@ -49,10 +55,12 @@ export const Navbar = () => {
           </ul>
 
           <a
-            href="/"
+            href={githubLink}
+            target="_blank"
             className="hidden lg:flex inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
             aria-label="Contribute"
             title="Contribute"
+            rel="noreferrer"
           >
             Contribute
           </a>
@@ -80,35 +88,36 @@ export const Navbar = () => {
               </svg>
             </button>
             {isMenuOpen && (
-              <div className="absolute top-0 left-0 w-full">
+              <div className="absolute top-0 left-0 w-full z-100">
                 <div className="p-5 bg-gray-200 border rounded shadow-sm">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <a
-                        href="/"
-                        aria-label="Company"
-                        title="Company"
-                        className="inline-flex items-center"
-                      >
-                        <svg
-                          className="w-8 text-deep-purple-accent-400"
-                          viewBox="0 0 24 24"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeMiterlimit="10"
-                          stroke="currentColor"
-                          fill="none"
+                      <Link href="/">
+                        <a
+                          aria-label="Awesome Morocco"
+                          title="Awesome Morocco"
+                          className="inline-flex items-center"
                         >
-                          <rect x="3" y="1" width="7" height="12" />
-                          <rect x="3" y="17" width="7" height="6" />
-                          <rect x="14" y="1" width="7" height="6" />
-                          <rect x="14" y="11" width="7" height="12" />
-                        </svg>
-                        <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                          Awesome Morocco
-                        </span>
-                      </a>
+                          <svg
+                            className="w-8 text-deep-purple-accent-400"
+                            viewBox="0 0 24 24"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeMiterlimit="10"
+                            stroke="currentColor"
+                            fill="none"
+                          >
+                            <rect x="3" y="1" width="7" height="12" />
+                            <rect x="3" y="17" width="7" height="6" />
+                            <rect x="14" y="1" width="7" height="6" />
+                            <rect x="14" y="11" width="7" height="12" />
+                          </svg>
+                          <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+                            Awesome Morocco
+                          </span>
+                        </a>
+                      </Link>
                     </div>
                     <div>
                       <button
@@ -128,8 +137,8 @@ export const Navbar = () => {
                   </div>
                   <nav>
                     <ul className="space-y-4">
-                      {routes.map((el) => (
-                        <li>
+                      {menuRoutes.map((el, i) => (
+                        <li key={`index-${i}`}>
                           <a
                             href={el.link}
                             aria-label={el.label}
@@ -142,12 +151,14 @@ export const Navbar = () => {
                       ))}
                       <li>
                         <a
-                          href="/"
+                          href={githubLink}
+                          target="_blank"
                           className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-gray-900 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                          aria-label="Sign up"
-                          title="Sign up"
+                          aria-label="Contribute"
+                          title="Contribute"
+                          rel="noreferrer"
                         >
-                          Sign up
+                          Contribute
                         </a>
                       </li>
                     </ul>
@@ -159,7 +170,7 @@ export const Navbar = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

@@ -1,4 +1,4 @@
-export const routes = [
+export const menuRoutes = [
   {
     link: '/',
     label: 'Home',
@@ -26,5 +26,42 @@ export const routes = [
   {
     link: '/about',
     label: 'About',
-  }
+  },
+]
+
+export const footerRoutes = [
+  {
+    title: 'Awesome Morocco',
+    subLinks: [
+      {
+        link: '/',
+        label: 'Home',
+      },
+      {
+        link: '/',
+        label: 'Communities',
+      },
+      {
+        link: '/',
+        label: 'Events',
+      },
+    ],
+  },
+  {
+    title: 'People',
+    subLinks: [
+      {
+        link: '/blogs',
+        label: 'Blogs',
+      },
+      {
+        link: '/',
+        label: 'Podcasts',
+      },
+      {
+        link: '/',
+        label: 'YouTube Channels',
+      },
+    ],
+  },
 ]

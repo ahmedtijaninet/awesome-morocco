@@ -1,5 +1,3 @@
-
-
 // NOTE what to add to the about page?
 // TODO do this!
 const About = () => (
@@ -145,7 +143,6 @@ const About = () => (
       </div>
     </div>
   </div>
-);
+)
 
-
-export default About;
+export default About
